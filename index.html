@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./main.css">
+    <title>Hangman</title>
+</head>
+
+<body>
+
+<div class="word-input">
+    <button class="open-button" id="openBtn" onclick="openForm()">Start</button>
+    
+    <div class="form-popup" id="wordForm">
+      <form name= "wordInput" action="#" class="form-container">
+        <h1>Enter your word!</h1>
+    
+        <input type="password" placeholder="Type your word here!" id="psw" pattern=".{3,}" 
+        title="A valid word must be three or more letters." required>
+    
+        <button type="submit" class="btn" onclick="setWord()">Play!</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Back</button>
+      </form>
+    </div>
+</div>
+
+<div class="hidden-word">
+    <h1 id="dashes"></h1>
+</div>
+
+</body>
+
+<script src="./app.js"></script>
+</html>
