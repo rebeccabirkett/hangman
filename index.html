@@ -4,31 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./main.css">
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Smokum&display=swap" rel="stylesheet">
     <title>Hangman</title>
 </head>
 
 <body>
-
-<div class="word-input">
-    <button class="open-button" id="openBtn" onclick="openForm()">Start</button>
+  <div class="word-input">
+    <button class="open-button" id="openBtn" onclick="openForm()"><div id="start">Start</div></button>
     
     <div class="form-popup" id="wordForm">
-      <form name= "wordInput" action="#" class="form-container">
-        <h1>Enter your word!</h1>
-    
-        <input type="password" placeholder="Type your word here!" id="psw" pattern=".{3,}" 
-        title="A valid word must be three or more letters." required>
-    
-        <button type="submit" class="btn" onclick="setWord()">Play!</button>
-        <button type="button" class="btn cancel" onclick="closeForm()">Back</button>
+      <form name= "wordInput" action="javascript:void(0);" class="form-container">
+        <input type="password" name="pwd" onfocus="this.value=''" placeholder="Click here and type in your word!" id="psw" minlength="3" required />
+        <!-- buttons -->
+        <button type="submit" id="submit" class="btn" onclick="setWord()">Play!</button>
       </form>
     </div>
-</div>
+  </div>
+  
+  <div class="header">
+    <img src="./images/hanging-board.png" id="header" alt="hanging-sign">
+    <h1 id="title">HANGMAN</h1>
+  </div>
+  
+  <div class="tumbleweed">
+    <img src="./images/tumbleweed.png" id="tumbleweed" alt="tumbleweed">
+  </div>
+  
+  <div class="reset" id="reset">
+    <h1 id="result"></h1>
+    <button class="reset-button" id="resetBtn" onclick=window.location.href=window.location.href><div id="reset-text">Play Again?</div></button>
+  </div>
 
-<div class="hidden-word">
-    <h1 id="dashes"></h1>
-</div>
+  <div class="game-area" id="game-area">
+    <img src="./images/3-piece-sign.png" id="wood" alt="wood background">
+    
+    <div class="gallows">
+      <img id="frame" src="./images/gallows.png">
+    </div>
+    
+    <div class="guessed-letters">
+      <p id="letters"></p>
+    </div>
 
+    <div class="rope">
+      <img id="empty-rope" src="./images/rope.png">
+    </div>
+    
+    <div class="hidden-word">
+      <h1 id="dashes"></h1>
+    </div>
+  </div>
 </body>
 
 <script src="./app.js"></script>
