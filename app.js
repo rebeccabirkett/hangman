@@ -5,6 +5,8 @@ const tumbleweed = document.getElementById("tumbleweed");
 const gameArea = document.getElementById("game-area");
 const reset = document.getElementById("reset");
 const resetText = document.getElementById("reset-text");
+const hangman = document.getElementById("hangman");
+const rope = document.getElementById("rope");
 
 // form elements*****************************************************
 const wordForm = document.getElementById("wordForm");
@@ -61,10 +63,7 @@ const required = () => {
         
 // when the player presses a key on the keyboard, the game will do one of two things:
 // if the word matches the key pressed, the letter will show in their word
-// if the key pressed does not match, a piece of the hangman will be added and the letter is logged
-//letters = letters guessed displayed in html
-//guesses = letters guessed array
-//dashes = the hidden word
+// if the key pressed does not match, a life is lost
 const userInput = () => {
     for (let l = 0; l < word.length; l++) {
         if (word[l].includes(event.key) === true) {
@@ -83,9 +82,24 @@ const userInput = () => {
     }
 };
 
+// when a wrong guess is made, a life is lost and a piece of the man is added
 const lifeLost = () => {
     lives -= 1;
     console.log(`${lives} lives left`);
+    if (lives === 5) {
+        hangman.src = "./images/head.png";
+        rope.style.display = "none";
+    } else if (lives === 4) {
+        hangman.src = "./images/torso.png";
+    } else if (lives === 3) {
+        hangman.src = "./images/leg.png";
+    } else if (lives === 2) {
+        hangman.src = "./images/legs.png";
+    } else if (lives === 1) {
+        hangman.src = "./images/arm.png";
+    } else if (lives === 0) {
+        hangman.src = "./images/body.png";
+    }
     condition();
 }
 
@@ -98,6 +112,7 @@ const winCheck = () => {
     }
 }
 
+// actions performed on a win condition being met
 const condition = () => {
     if (lives > 0 && progressWord.includes('_') === false) {
         resetText.innerText = "You won! Retry?";
@@ -126,19 +141,3 @@ submit.addEventListener("click", () => {
     console.log(guesses);
 }
 );
-
-// when the player presses 'reset' upon win/lose condition met
-// resetBtn.addEventListener("click", () => {
-//     console.log("player clicked reset");
-//     gameArea.classList.toggle('slide-in', false);
-//     gameArea.classList.toggle('slide-out-top', true);
-//     header.style.display = "block";
-//     title.innerText = "HANGMAN";
-//     openForm();
-//     progressWord.length = 0;
-//     guesses.length = 0;
-//     letters.innerHTML = guesses;
-//     dashes.innerHTML = progressWord;
-// });
-
-

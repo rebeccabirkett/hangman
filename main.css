@@ -10,6 +10,7 @@ body {
   background-image: url(./images/25.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 .header img {
@@ -132,10 +133,6 @@ body {
   opacity: 0.9;
 }
 
-/* .form-container .btn:hover, .open-button:hover {
-  opacity: 1;
-} */ 
-
 .gallows img {
   height: 320px;
   position: fixed;
@@ -170,11 +167,19 @@ body {
 .rope {
   position: fixed;
   top: 285px;
-  left: 195px;
+  left: 200px;
 }
 
 .rope img {
-  height: 75px;
+  height: 60px;
+  animation: shake-top 10s ease-in-out infinite both;
+}
+
+.hangman img {
+  position: fixed;
+  top: 285px;
+  left: 196px;
+  width: 18%;
   animation: shake-top 10s ease-in-out infinite both;
 }
 
@@ -186,6 +191,7 @@ body {
   left: 50px;
   font-size: 30px;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .hidden-word {
@@ -195,6 +201,7 @@ body {
   width: inherit;
   height: 110px;
   bottom: 58px;
+  text-transform: uppercase;
 }
 
 /* animation keyframes ***********************************************************/
@@ -235,4 +242,204 @@ body {
 @keyframes slide-out-top {
   0% {transform: translateY(0); opacity: 1;}
   100% {transform: translateY(-1000px); opacity: 0;}
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1024px) {
+  body {
+    height: 768px;
+    width: 1024px;
+  }
+
+  .header img {
+    left: 265px;
+    width: 500px;
+  }
+  
+  .header h1 {
+    font-size: 8vw;
+    text-shadow: 5px 4px 4px #333333;
+    padding-top: 155px;
+    padding-left: 10px;
+  }
+
+  .tumbleweed img {
+    animation: roll linear 9s;
+    animation-iteration-count: infinite;
+    transform-origin: 50% 50%;
+    top: 580px;
+  }
+
+  .reset-button {
+    top: 690px;
+    left: 700px;
+  }
+  
+  .reset-button #reset-text {
+    font-size: 30px;
+  }
+  
+  .open-button {
+    top: 690px;
+    left: 700px;
+  }
+  
+  .gallows img {
+    height: 510px;
+    bottom: 150px;
+    left: 90px;
+  }
+  
+  .game-area #wood {
+    top: -455px;
+    left: 80px;
+    width: 850px;
+  }
+  
+  .rope {
+    position: fixed;
+    top: 180px;
+    left: 350px;
+  }
+  
+  .rope img {
+    height: 100px;
+  }
+  
+  .hangman img {
+    top: 182px;
+    left: 343px;
+    width: 11%;
+  }
+  
+  .guessed-letters {
+    letter-spacing: 20px;
+    width: 300px;
+    height: 300px;
+    top: 220px;
+    left: 510px;
+    font-size: 50px;
+  }
+  
+  .hidden-word {
+    font-size: 40px;
+    bottom: 15px;
+  }
+
+  /* keyframes */
+  @keyframes roll{
+    0% {transform: translate(1000px,50px) rotate(0deg);}
+    50% {transform: translate( 0px, 50px) rotate(-180deg);}
+    100% {transform: translate(-1000px,50px) rotate(-360deg);}
+  }
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width : 1824px) {
+  body {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100vh;
+    width: 100vw;
+    background-position: 0% 85%;
+  }
+
+  .header {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+  .header img {
+    position: static;
+    width: 600px;
+  }
+  
+  .header h1 {
+    position: fixed;
+    top: 5%;
+    font-size: 100px;
+    text-shadow: 7px 5px 5px #333333;
+  }
+
+  .tumbleweed {
+    height: 100vh;
+    width: 100vh;
+  }
+
+  .tumbleweed img {
+    animation: roll linear 10s;
+    animation-iteration-count: infinite;
+    transform-origin: 50% 50%;
+    height: 150px;
+    position: static;
+    top: 0;
+  }
+
+  .reset-button {
+    position: fixed;
+    top: 92vh;
+    left: 80vw;
+  }
+  
+  .open-button {
+    position: fixed;
+    top: 92vh;
+    left: 80vw;
+  }
+  
+  .game-area {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .gallows img {
+    height: 700px;
+    left: 18vw;
+    bottom: 25vh;
+  }
+  
+  .game-area #wood {
+    top: -100vh;
+    left: 50vw;
+    width: 900px;
+  }
+  
+  .rope {
+    top: -21vh;
+    left: 31.1vw;
+  }
+  
+  .rope img {
+    height: 138px;
+  }
+  
+  .hangman img {
+    top: -21vh;
+    left: 31vw;
+    width: 6%;
+  }
+  
+  .guessed-letters {
+    letter-spacing: 50px;
+    line-height: 150px;
+    font-size: 80px;
+    width: 500px;
+    height: 500px;
+    top: -40vh;
+    left: 59vw;
+  }
+  
+  .hidden-word {
+    font-size: 60px;
+    bottom: 20vh;
+    left: 19vw;
+  }
+
+  /* keyframes */
+  @keyframes roll{
+    0% {transform: translate(3000px,49vh) rotate(0deg);}
+    50% {transform: translate( 0px, 49vh) rotate(-180deg);}
+    100% {transform: translate(-3000px,49vh) rotate(-360deg);}
+  }
 }
